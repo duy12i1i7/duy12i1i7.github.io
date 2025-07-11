@@ -199,47 +199,79 @@
 
         .title-word {
             display: inline-block;
-            background: linear-gradient(45deg, #4a90e2, #6bb6ff, #5dade2);
+            background: linear-gradient(
+                135deg, 
+                #ff00c7 0%, 
+                #00fff7 50%, 
+                #ff6b35 100%
+            );
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 300% 300%;
-            animation: textShine 8s ease infinite;
+            animation: titleGradientFlow 6s ease-in-out infinite, titleFadeUp 1s ease forwards;
             position: relative;
             opacity: 0;
             transform: translateY(100%);
             animation-delay: 1s;
             padding-bottom: 0.1em;
             overflow: visible;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 199, 0.3));
+            transition: all 0.3s ease;
         }
 
-        @keyframes textShine {
+        @keyframes titleGradientFlow {
             0% { 
-                background-position: 0% 50%; 
-                text-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+                background-position: 0% 50%;
+                filter: drop-shadow(0 0 10px rgba(255, 0, 199, 0.3));
+                transform: scale(1);
             }
             25% { 
-                background-position: 100% 50%; 
-                text-shadow: 0 0 15px rgba(107, 182, 255, 0.4);
+                background-position: 50% 0%;
+                filter: drop-shadow(0 0 20px rgba(255, 0, 199, 0.5));
+                transform: scale(1.02);
             }
             50% { 
-                background-position: 50% 100%; 
-                text-shadow: 0 0 12px rgba(93, 173, 226, 0.5);
+                background-position: 100% 50%;
+                filter: drop-shadow(0 0 15px rgba(0, 255, 247, 0.4));
+                transform: scale(1.01);
             }
             75% { 
-                background-position: 0% 50%; 
-                text-shadow: 0 0 15px rgba(107, 182, 255, 0.4);
+                background-position: 50% 100%;
+                filter: drop-shadow(0 0 25px rgba(0, 255, 247, 0.6));
+                transform: scale(1.03);
             }
             100% { 
-                background-position: 0% 50%; 
-                text-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+                background-position: 0% 50%;
+                filter: drop-shadow(0 0 10px rgba(255, 107, 53, 0.4));
+                transform: scale(1);
             }
         }
 
-        .title-word:nth-child(1) { animation-delay: 0.8s; }
-        .title-word:nth-child(2) { animation-delay: 1.0s; }
-        .title-word:nth-child(3) { animation-delay: 1.2s; }
-        .title-word:nth-child(4) { animation-delay: 1.4s; }
+        @keyframes titleFadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title-word:hover {
+            filter: drop-shadow(0 0 30px rgba(255, 0, 199, 0.8)) drop-shadow(0 0 50px rgba(0, 255, 247, 0.6));
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .title-word:nth-child(1) { 
+            animation-delay: 0.8s, 0.8s; 
+        }
+        .title-word:nth-child(2) { 
+            animation-delay: 1.0s, 1.0s; 
+        }
+        .title-word:nth-child(3) { 
+            animation-delay: 1.2s, 1.2s; 
+        }
+        .title-word:nth-child(4) { 
+            animation-delay: 1.4s, 1.4s; 
+        }
 
         .hero p {
             font-size: 1.2rem;
@@ -398,6 +430,198 @@
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 10px;
+        }
+
+        /* About Card Styling */
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(125, 18, 255, 0.1);
+            transition: var(--transition);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .about-card.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 199, 255, 0.1);
+        }
+
+        .about-avatar {
+            flex-shrink: 0;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 200%;
+            padding: 3px;
+            transition: var(--transition);
+            position: relative;
+            animation: gradientShift 4s ease-in-out infinite;
+            box-shadow: 
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 4px 20px rgba(0, 199, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { 
+                background-position: 0% 50%;
+                transform: scale(1);
+            }
+            50% { 
+                background-position: 100% 50%;
+                transform: scale(1.02);
+            }
+            100% { 
+                background-position: 0% 50%;
+                transform: scale(1);
+            }
+        }
+
+        .about-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 0 1px rgba(255, 255, 255, 0.2),
+                0 8px 40px rgba(0, 199, 255, 0.4),
+                0 0 60px rgba(125, 18, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            animation-play-state: paused;
+        }
+
+        .about-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            border-radius: 50%;
+            background: var(--darker);
+            display: block;
+            filter: contrast(1.1) brightness(1.05);
+        }
+
+        .about-avatar:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, 
+                rgba(0, 199, 255, 0.8), 
+                rgba(125, 18, 255, 0.8), 
+                rgba(255, 0, 199, 0.6),
+                rgba(0, 199, 255, 0.8));
+            background-size: 300% 300%;
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+            animation: gradientRotate 6s linear infinite;
+            filter: blur(8px);
+        }
+
+        @keyframes gradientRotate {
+            0% { 
+                background-position: 0% 50%;
+                transform: rotate(0deg);
+            }
+            25% { 
+                background-position: 50% 0%;
+                transform: rotate(90deg);
+            }
+            50% { 
+                background-position: 100% 50%;
+                transform: rotate(180deg);
+            }
+            75% { 
+                background-position: 50% 100%;
+                transform: rotate(270deg);
+            }
+            100% { 
+                background-position: 0% 50%;
+                transform: rotate(360deg);
+            }
+        }
+
+        .about-avatar:hover:before {
+            opacity: 0.6;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .about-highlights {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .highlight-badge {
+            background: rgba(0, 199, 255, 0.1);
+            border: 1px solid rgba(0, 199, 255, 0.3);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .highlight-badge:hover {
+            background: rgba(0, 199, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive for About Card */
+        @media (max-width: 768px) {
+            .about-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            
+            .about-avatar {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .about-highlights {
+                justify-content: center;
+            }
         }
 
         /* Timeline */
@@ -986,13 +1210,26 @@
             <div class="section-title">
                 <h2>About Me</h2>
             </div>
-            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1.2rem; line-height: 1.8;">
-                    I'm on a journey to become an inspiring educator and researcher, focusing on advancing education and the practical application of artificial intelligence in everyday life. With expertise spanning Network Operations, DevOps, Robotics, and AI integration, I develop solutions that bridge technology and real-world challenges.
-                </p>
-                <p style="font-size: 1.2rem; line-height: 1.8; margin-top: 20px;">
-                    As a co-founder of DigiFact Solution, I lead research and development of digital transformation solutions tailored for businesses. My work includes building robust MVVM-WPF applications, implementing AI technologies, and establishing DevOps cultures that drive innovation.
-                </p>
+            <div class="about-card">
+                
+                <div class="about-content">
+                    <h3>Duy Nguyen Dinh</h3>
+                    <p>
+                        I'm driven to become an educator and researcher who inspires, relentlessly advancing how we learn and democratizing the power of artificial intelligence for tangible, everyday impact. My journey is fueled by full-stack technology fluency – mastering the infrastructure (Network Operations), optimizing the lifecycle (DevOps), engineering physical intelligence (Robotics), and harnessing cognitive power (AI Integration). This deep, cross-layer expertise empowers me to architect and deliver integrated, full-stack solutions that seamlessly bridge cutting-edge technology with pressing real-world challenges, from robust foundations to intelligent applications.
+                    <p>
+                        As Co-Founder of DigiFact Solution, I spearhead R&D in full-spectrum digital transformation. We craft bespoke solutions, empowering businesses through the development of robust MES, CRM, and ERP platforms, strategic AI implementation, and the cultivation of high-performance DevOps cultures – all engineered end-to-end to unlock sustainable innovation and decisive competitive advantage.
+                    </p>
+                    <div class="about-highlights">
+                        <span class="highlight-badge">Artificial Intelligence</span>
+                        <span class="highlight-badge">Full Stack Developer</span>
+                        <span class="highlight-badge">Robotics</span>
+                        <span class="highlight-badge">Educator</span>
+                        <span class="highlight-badge">Entrepreneur</span>
+                    </div>
+                </div>
+                <div class="about-avatar">
+                    <img src="avatar.png" alt="Nguyen Dinh Duy Avatar">
+                </div>
             </div>
         </div>
     </section>
@@ -1456,6 +1693,11 @@
         // Observe sections
         document.querySelectorAll('section').forEach(section => {
             observer.observe(section);
+        });
+
+        // Observe about card
+        document.querySelectorAll('.about-card').forEach(card => {
+            observer.observe(card);
         });
 
         // Observe timeline items
