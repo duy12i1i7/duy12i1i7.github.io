@@ -687,6 +687,50 @@
             width: 100%;
         }
 
+        /* In-Process Badge Styling */
+        .in-process-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(0, 199, 255, 0.3);
+            animation: badgePulse 2s infinite alternate;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes badgePulse {
+            0% { 
+                transform: scale(1); 
+                box-shadow: 0 2px 8px rgba(0, 199, 255, 0.3);
+            }
+            100% { 
+                transform: scale(1.05); 
+                box-shadow: 0 4px 12px rgba(0, 199, 255, 0.5);
+            }
+        }
+
+        .in-process-badge:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .in-process-badge:hover:before {
+            left: 100%;
+        }
+
         /* Contact */
         .contact-grid {
             display: grid;
@@ -1303,13 +1347,18 @@
                 </div>
                 
                 <div class="publication-item">
-                    <h3 class="publication-title">Drone-based Autonomous Navigation and Victim Detection Using Deep Learning Technique for Non-GPS In-Building Environments</h3>
+                    <h3 class="publication-title"><span class="in-process-badge">In-Process</span>Drone-based Autonomous Navigation and Victim Detection Using Deep Learning Technique for Non-GPS In-Building Environments</h3>
                     <div class="publication-conference">17th International Conference on Computational Collective Intelligence ICCCI 2025</div>
                 </div>
                 
                 <div class="publication-item">
+                    <h3 class="publication-title"><span class="in-process-badge">In-Process</span>Machine Learning-Based Formation Control for Underactuated Multi-AUV Systems in Dynamic Underwater Environments</h3>
+                    <div class="publication-conference">The 18th Asian International Conference on Fluid Machinery AICFM 2025 </div>
+                </div>
+
+                <div class="publication-item">
                     <h3 class="publication-title">A model of applying UAV technology and artificial intelligence to serve the command and support at the scene</h3>
-                    <div class="publication-conference"> <a href="https://dientuungdung.vn/mot-mo-hinh-ung-dung-cong-nghe-uav-va-tri-tue-nhan-tao-phuc-vu-chi-huy-va-ho-tro-ung-cuu-tai-hien-truong-8271.html">REV-ECIT 2024</a></div>
+                    <div class="publication-doi"> <a href="https://dientuungdung.vn/mot-mo-hinh-ung-dung-cong-nghe-uav-va-tri-tue-nhan-tao-phuc-vu-chi-huy-va-ho-tro-ung-cuu-tai-hien-truong-8271.html">REV-ECIT 2024</a></div>
                 </div>
             </div>
         </div>
