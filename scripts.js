@@ -3,9 +3,34 @@ let showingSelected = true;
 
 document.addEventListener('DOMContentLoaded', function () {
   loadPublications();
+  addDigifactEngineeringExperience();
   const toggleButton = document.getElementById('toggle-publications');
   if (toggleButton) toggleButton.addEventListener('click', togglePublications);
 });
+
+function addDigifactEngineeringExperience() {
+  const section = document.getElementById('engineering-experience');
+  if (!section || section.querySelector('[data-company="digifact"]')) return;
+
+  const item = document.createElement('div');
+  item.className = 'timeline-item';
+  item.dataset.company = 'digifact';
+  item.innerHTML = `
+    <span class="timeline-date">Oct 2024–Nov 2025</span>
+    <div>
+      <strong>Technology Integration Specialist / Co-Founder</strong><br>
+      <span>DigiFact Solution</span>
+      <p>Led research and development of tailored digital transformation solutions for businesses, combining AI integration, software systems, and production-oriented engineering.</p>
+    </div>
+  `;
+
+  const heading = section.querySelector('h2');
+  if (heading && heading.nextSibling) {
+    section.insertBefore(item, heading.nextSibling);
+  } else {
+    section.appendChild(item);
+  }
+}
 
 function loadPublications() {
   fetch('publications.json')
