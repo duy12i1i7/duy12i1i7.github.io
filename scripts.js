@@ -37,6 +37,19 @@ function renderPublications(selectedOnly) {
   items.forEach(pub => container.appendChild(createPublicationElement(pub)));
 }
 
+function isCurrentAuthor(author) {
+  const normalized = author.toLowerCase().replace(/\s+/g, ' ').trim();
+  const variants = [
+    'dinh duy nguyen',
+    'dinh-duy nguyen',
+    'd. d. nguyen',
+    'd.d. nguyen',
+    'd. duy nguyen',
+    'd.duy nguyen'
+  ];
+  return variants.some(name => normalized === name || normalized.includes(name));
+}
+
 function createPublicationElement(publication) {
   const item = document.createElement('div');
   item.className = 'publication-item';
@@ -67,9 +80,7 @@ function createPublicationElement(publication) {
     publication.authors.forEach((author, index) => {
       const span = document.createElement('span');
       span.textContent = author;
-      if (author.toLowerCase().includes('nguyen dinh duy') || author.toLowerCase().includes('dinh duy nguyen')) {
-        span.className = 'highlight-name';
-      }
+      if (isCurrentAuthor(author)) span.className = 'highlight-name';
       authors.appendChild(span);
       if (index < publication.authors.length - 1) authors.appendChild(document.createTextNode(', '));
     });
@@ -84,7 +95,7 @@ function createPublicationElement(publication) {
   if (publication.links) {
     const links = document.createElement('div');
     links.className = 'pub-links';
-    const labels = { pdf: 'PDF', doi: 'DOI', code: 'Code', project: 'Project' };
+    const labels = { pdf: 'PDF', doi: 'DOI', publisher: 'Publisher', code: 'Code', project: 'Project' };
     Object.entries(labels).forEach(([key, label]) => {
       const href = publication.links[key];
       if (href && href !== '#') {
