@@ -1,0 +1,52 @@
+{
+  "publications": [
+    {
+      "title": "Leveraging Deep Learning Technique with Meta-Data-Featured Images Captured by Drone for Real-Time Victim Positioning in Flood-Affected Areas",
+      "authors": [],
+      "venue": "2025 19th International Conference on Ubiquitous Information Management and Communication (IMCOM)",
+      "selected": 1,
+      "links": {
+        "doi": "https://doi.org/10.1109/IMCOM64595.2025.10857535"
+      }
+    },
+    {
+      "title": "A Novel Simulation-Driven Data Enrichment Approach to Improve Machine Learning Algorithm Performance",
+      "authors": [],
+      "venue": "Information and Communication Technology, 2025",
+      "selected": 1,
+      "links": {
+        "doi": "https://doi.org/10.1007/978-981-96-4288-5_30"
+      }
+    },
+    {
+      "title": "Drone-based Autonomous Navigation and Victim Detection Using Deep Learning Technique for Non-GPS In-Building Environments",
+      "authors": [],
+      "venue": "17th International Conference on Computational Collective Intelligence (ICCCI 2025)",
+      "selected": 1,
+      "links": {}
+    },
+    {
+      "title": "Cooperative UAV Swarm System for Acoustic Explosion Localization Using ROS2 and PX4",
+      "authors": [],
+      "venue": "MECATRONICS-REM 2025 International Conference",
+      "selected": 1,
+      "links": {}
+    },
+    {
+      "title": "A Co-Simulation Approach for UAV-Network-AI Interaction in Digital Twin Visual Context",
+      "authors": [],
+      "venue": "The 14th International Symposium on Information and Communication Technology (SOICT 2025)",
+      "selected": 0,
+      "links": {}
+    },
+    {
+      "title": "A model of applying UAV technology and artificial intelligence to serve the command and support at the scene",
+      "authors": [],
+      "venue": "REV-ECIT 2024",
+      "selected": 0,
+      "links": {
+        "project": "https://dientuungdung.vn/mot-mo-hinh-ung-dung-cong-nghe-uav-va-tri-tue-nhan-tao-phuc-vu-chi-huy-va-ho-tro-ung-cuu-tai-hien-truong-8271.html"
+      }
+    }
+  ]
+}
